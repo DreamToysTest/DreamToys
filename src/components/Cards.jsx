@@ -10,19 +10,18 @@ const { CartProducts, setCartProducts } = useApp();
 const [quantity, setQuantity] = useState(0);
 
 useEffect(() => {
-    const cartProductsFromStorage = localStorage.getItem('cartProducts');
+    const cartProductsFromStorage = localStorage.getItem('cartProducts')
     if (cartProductsFromStorage) {
-        setCartProducts(JSON.parse(cartProductsFromStorage));
+        setCartProducts(JSON.parse(cartProductsFromStorage))
     }
-}, []);
+}, [])
 
 const AddToCart = (product) => {
     const productWithQuantity = { ...product, quantity };
-    setCartProducts((prevCartProducts) => [...prevCartProducts, productWithQuantity]);
+    setCartProducts((prevCartProducts) => [...prevCartProducts, productWithQuantity])
     
-    localStorage.setItem('cartProducts', JSON.stringify([...CartProducts, productWithQuantity]));
-};
-console.log(CartProducts)
+    localStorage.setItem('cartProducts', JSON.stringify([...CartProducts, productWithQuantity]))
+}
 const isInCart  = CartProducts.some((item) => item.id === product.id)
   return (
     <div className='w-[16rem] h-[22rem]    p-2 flex flex-col  border-[0.1rem] border-[#BACBD1] rounded-lg'> 

@@ -4,7 +4,7 @@ import Image from "next/image";
 const ShopAccordingToTheCharacters = () => {
   return (
     <section className='w-full h-full flex flex-col justify-center items-center  mx-auto my-8' >
-        <h1 className='text-[3rem] text-[#04364A]'>تسوق حسب الشخصيات</h1>
+        <h1 className='lg:text-[3rem] md:text-[2rem] small:text-[2rem] text-[#04364A]'>تسوق حسب الشخصيات</h1>
         <div className='w-full h-[10rem] flex flex-between mt-4'>
 
 

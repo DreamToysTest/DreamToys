@@ -12,8 +12,8 @@ const DeleteProductFromCart = (productID) => {
     }
     return(
         <>
-        <button onClick={() => DeleteProduct(productID)} className='w-[12rem] h-[4rem] flex justify-center items-center border-[0.2rem] border-[#3F6F7F]'>
-            <h1 className='text-[2rem] text-[#3F6F7F]'>حذف المنتج</h1>
+        <button onClick={() => DeleteProduct(productID)} className='lg:w-[12rem] lg:h-[4rem] md:w-[12rem] md:h-[4rem] small:w-[6rem] small:h-[2.6rem]   flex justify-center items-center border-[0.2rem] border-[#3F6F7F] rounded-xl'>
+            <h1 className='lg:text-[1.2rem] md::text-[1.8rem] small:text-[1rem] text-[#3F6F7F]'>حذف المنتج</h1>
         </button>
         </>
     )
