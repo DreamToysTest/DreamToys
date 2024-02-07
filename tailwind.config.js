@@ -10,6 +10,9 @@ module.exports = {
       screens:{
         "small":"320px"
       },
+      fontFamily: {
+        'sans': ['Tajawal', 'sans-serif'],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
