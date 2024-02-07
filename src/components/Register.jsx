@@ -170,8 +170,8 @@ const Register = () => {
    </div>
    
                        {isLoading ? (
-                         <IoCloseOutline />
-                       ) : (
+                         <LuLoader size={25} className="animate-spin" />
+                         ) : (
                          <button
                            className="flex items-center justify-center w-full p-3 space-x-4 capitalize rounded shadow-sm bg-[#3F6F7F] hover:shadow-2xl disabled:text-gray-300 disabled:bg-violet-500"
                            type="submit"

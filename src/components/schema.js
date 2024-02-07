@@ -3,7 +3,11 @@ import * as yup from "yup";
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 export const loginSchema = yup
   .object({
-    phoneNumber: yup.string().required(),
+    phoneNumber: yup.string()
+    .matches(/^07\d{9}$/,{
+      message: "Phone number must start with '07' and have a length of 11",
+    })
+    .required(),
     password: yup
       .string()
       .min(6)
@@ -14,7 +18,10 @@ export const loginSchema = yup
 export const registerSchema = yup
   .object({
     name: yup.string().optional(),
-    phoneNumber: yup.string().required(),
+    phoneNumber: yup.string()
+    .matches(/^07\d{9}$/,{
+      message: "Phone number must start with '07' and have a length of 11",
+    }).required(),
     password: yup
     .string()
     .min(6)
