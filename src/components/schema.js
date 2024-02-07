@@ -3,7 +3,7 @@ import * as yup from "yup";
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 export const loginSchema = yup
   .object({
-    email: yup.string().email("Please enter a valid email").required(),
+    phoneNumber: yup.string().required(),
     password: yup
       .string()
       .min(6)
@@ -14,7 +14,7 @@ export const loginSchema = yup
 export const registerSchema = yup
   .object({
     name: yup.string().optional(),
-    phoneNumber: yup.string().optional(),
+    phoneNumber: yup.string().required(),
     password: yup
     .string()
     .min(6)

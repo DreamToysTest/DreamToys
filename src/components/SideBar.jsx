@@ -11,8 +11,8 @@ const SideBar = ({setIsOpen,categories}) => {
         }}
       >
 
-<button onClick={()=>setIsOpen(false)} className="w-[3rem] h-[3rem] "><IoMdClose className="w-full h-full text-white" /></button>
-<div className='w-full h-full flex flex-col px-4 py-12 '>
+<button onClick={()=>setIsOpen(false)} className="w-[3rem] h-[3rem]  "><IoMdClose className="w-full h-full text-white" /></button>
+<div className='w-full h-full flex flex-col  '>
 {categories.map((category, index) => (
                 <Link href={category.components} className="w-full h-[2rem] my-8 flex justify-end items-end ">
                 <span className="text-center text-[1.2rem]  mr-1 text-bold text-white">{category.title}</span>

@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState } from "react";
-
 import AppContext from "./AppContext";
 
 const AppProvider = ({ initialTheme, children }) => {
@@ -13,7 +12,7 @@ const AppProvider = ({ initialTheme, children }) => {
     <AppContext.Provider
       value={{
         CartProducts,
-        setCartProducts
+        setCartProducts,
       }}
     >
       {children}
