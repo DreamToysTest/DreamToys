@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <main className="h-full w-full flex flex-col justify-center items-center mt-5">
       <AppProvider>
-        <div className="xl:w-[80rem] lg:w-[60rem] md:w-full small:w-full h-full flex flex-col justify-center items-center">
+        <div className="xl:w-[80rem] lg:w-[60rem]  md:w-full small:w-full h-full flex flex-col justify-center items-center">
           {!isLoggedIn && <LoginForm  setIsLoggedIn={setIsLoggedIn} />}
           {isLoggedIn && (
             <>

@@ -7,13 +7,13 @@ import Link from 'next/link';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import { RiUserLine } from "react-icons/ri";
-import { PiCoinsLight } from "react-icons/pi";
 import { IoMenu } from "react-icons/io5";
 import {ROUTES} from "./routes"
 import { CiMenuBurger } from "react-icons/ci";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import SideBar from "../SideBar";
+import { PiCoinsLight } from "react-icons/pi";
 
 const Header = () => {
 
@@ -78,7 +78,7 @@ const Header = () => {
     />
     </Link>
 
-        <div className=" flex justify-center items-center flex-row w-[50rem]  h-[3rem] rounded-full border-[0.2rem] border-[#BACBD1] relative ml-12  ">
+        <div className=" flex justify-center items-center flex-row w-[50%]  h-[3rem] rounded-full border-[0.2rem] border-[#BACBD1] relative  ">
             <div className="absolute top-1 right-4 items-center justify-center">
             <CiSearch className="w-[2rem] h-[2rem]  text-[#BACBD1]" />
             </div>
@@ -88,7 +88,12 @@ const Header = () => {
                 placeholder="بحث"
             />
         </div>
-        <div  className="w-[30rem] h-[3rem]">
+        <div className="w-[5rem] h-[3rem] justify-center items-center flex">
+        <PiCoinsLight className="w-[2.5rem] h-[2.5rem] fill-yellow-400" />
+        <h1 className="text-[1.4rem] ml-1 text-[#3F6F7F]">0</h1>
+        </div>
+
+        <div  className="w-[50%] h-[3rem]">
           <div className="w-full h-full flex flex-row items-center justify-between ml-2">
             {categories.map((category, index) => (
               <li
@@ -126,7 +131,7 @@ const Header = () => {
         </Link>
 </div>
   
-      <div className=" flex justify-center items-center flex-row md:w-[30rem] small:w-[15rem] h-[3rem] rounded-full border-[0.2rem] border-[#BACBD1] relative md:ml-12 small:ml-2  ">
+      <div className=" flex justify-center items-center flex-row md:w-[30rem] small:w-[10rem] h-[3rem] rounded-full border-[0.2rem] border-[#BACBD1] relative md:ml-12 small:ml-2  ">
               <div className="absolute top-1 right-4 items-center justify-between">
               <CiSearch className="w-[2rem] h-[2rem]  text-[#BACBD1]" />
               </div>
@@ -136,6 +141,10 @@ const Header = () => {
                   placeholder="بحث"
               />
           </div>
+          <div className="w-[3rem] h-[2rem] justify-center items-center flex">
+        <PiCoinsLight className="w-[1.5rem] h-[1.5rem] fill-yellow-400" />
+        <h1 className="text-[1rem] ml-1 text-[#3F6F7F]">0</h1>
+        </div>
   
           {isOpen? (
               <SideBar setIsOpen={setIsOpen} categories={categories} />
