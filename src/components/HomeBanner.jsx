@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
+import Link from 'next/link';
 
 const HomeBanner = () => {
   return (
@@ -41,7 +42,7 @@ const HomeBanner = () => {
     />
                     </div>
                 <button className='w-[80%] lg:h-[3rem] md:h-[4rem] small:h-[3.5rem] bg-[#3F6F7F] rounded-lg flex justify-center items-center'>
-                    <span className='text-white text-[1.2rem]'>تسوق الان  </span>
+                    <span className='text-white text-[1.2rem]'><Link href="/categories">تسوق الان</Link></span>
                     <FaArrowRight className='text-white ml-2' />
                 </button>
                 </div>

@@ -1,16 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: 'Tajawal';
-    src: url('/fonts/Tajawal-Black.ttf');
-    src: url('/fonts/Tajawal-Bold.ttf');
-    src: url('/fonts/Tajawal-ExtraBold.ttf');
-    src: url('/fonts/Tajawal-ExtraLight.ttf');
-    src: url('/fonts/Tajawal-Light.ttf');
-    src: url('/fonts/Tajawal-Medium.ttf');
-    src: url('/fonts/Tajawal-Regular.ttf');
-    font-weight: 400;
-    font-style: normal;
-  }

@@ -1,10 +1,10 @@
 'use client'
-import { Footer } from "../components/footer/footer.jsx";
+import { Footer } from "../components/footer.jsx";
 import HomeBanner from "../components/HomeBanner.jsx";
-import Header from "../components/header/Header.jsx"
-import ShopAccordingToTheCategory from "../components/header/ShopAccordingToTheCategory.jsx";
-import ShopAccordingToTheGender from "@/components/header/ShopAccordingToTheGender.jsx";
-import ShopAccordingToTheCharacters from "@/components/header/ShopAccordingToTheCharacters.jsx";
+import Header from "../components/header.jsx"
+import ShopAccordingToTheCategory from "../components/ShopAccordingToTheCategory.jsx";
+import ShopAccordingToTheGender from "@/components/ShopAccordingToTheGender.jsx";
+import ShopAccordingToTheCharacters from "@/components/ShopAccordingToTheCharacters.jsx";
 import DifferentProducts from "@/components/DifferentProducts.jsx";
 import AnswerAQuestionToWin from "@/components/AnswerAQuestionToWin.jsx";
 import AppProvider from "@/components/context/AppProvider.jsx";

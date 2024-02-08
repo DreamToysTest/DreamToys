@@ -1,5 +1,4 @@
-import Header from "@/components/header/Header";
-import { Footer } from "@/components/footer/footer.jsx";
+"use client";
 import AppProvider from "@/components/context/AppProvider.jsx";
 import CartProducts from "@/components/CartProducts";
 import Checkout from "@/components/Checkout";

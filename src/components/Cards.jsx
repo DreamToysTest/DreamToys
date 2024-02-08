@@ -31,15 +31,14 @@ const Cards = ({ product }) => {
 
 
   return (
-    <div className='w-[16rem] h-[22rem] p-2 flex flex-col border-[0.1rem] border-[#BACBD1] rounded-lg'>
+    <div className='w-[16rem] h-[22rem] p-2 flex flex-col border-[0.1rem] border-[#BACBD1] rounded-xl'>
       <div className='w-full h-[60%] relative'>
         <Image
-          className='w-full h-full rounded-lg'
+          className=' rounded-lg object-cover'
           src={product.image}
           alt='Icon'
           priority
-          width={60}
-          height={60}
+          fill
         />
         <div className='w-full h-[3rem] top-0 absolute flex justify-between px-2'>
           <button className='w-[1.5rem] h-[1.5rem]'>
@@ -50,8 +49,8 @@ const Cards = ({ product }) => {
           </button>
         </div>
       </div>
-      <h1 className='text-right text-[1.2rem]'>{product.title}</h1>
-      <h1 className='text-right text-[1.2rem]'>{product.irice}</h1>
+      <p className='text-right text-xl'>{product.title}</p>
+      <p className='text-right text-base'>{product.price} د.ع.</p>
       {isInCart ? (
         <DeleteProductFromCart productID={product.id} />
       ) : (

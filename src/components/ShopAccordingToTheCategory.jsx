@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Image from "next/image";
-import { LeftArrow,RightArrow,Arrow,TaskCategoryButton } from "../HorizontalScrolling";
+import { LeftArrow,RightArrow,Arrow,TaskCategoryButton } from "./HorizontalScrolling";
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import 'react-horizontal-scrolling-menu/dist/styles.css';
 const ShopAccordingToTheCategory = () => {

@@ -1,5 +1,5 @@
-import Header from "@/components/header/Header";
-import { Footer } from "@/components/footer/footer.jsx";
+"use client"
+
 import AppProvider from "@/components/context/AppProvider.jsx";
 import CartProducts from "@/components/CartProducts";
 export default function Home() {
