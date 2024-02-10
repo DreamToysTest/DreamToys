@@ -4,13 +4,26 @@ import { CiShare2, CiHeart } from 'react-icons/ci';
 import useApp from './context/useApp';
 import DeleteProductFromCart from './DeleteProductFromCart';
 import LoginForm, {openModal} from './LoginForm';
-
+import axios from 'axios';
 const Cards = ({ product }) => {
-  const { CartProducts, setCartProducts } = useApp();
+  const { CartProducts, setCartProducts, accessToken, userInfo} = useApp();
   const [quantity, setQuantity] = useState(0);
   const [showLoginForm, setShowLoginForm] = useState(false);
 
-
+  const AddToCart = (product) => {
+    const response = axios.post("https://aon-final.onrender.com/order/add", 
+    {
+      purchase_type: "توصيل",
+      productId: product.id,
+      userId: userInfo.id
+    },{
+      headers: {
+        'Content-Type': 'application/json',
+        'token' :accessToken
+      },
+    });
+    console.log(response)
+  }
 
   // useEffect(() => {
   //   const cartProductsFromStorage = localStorage.getItem('cartProducts');
@@ -55,7 +68,7 @@ const Cards = ({ product }) => {
         <DeleteProductFromCart productID={product.id} />
       ) : (
         <button
-
+        onClick={()=> AddToCart(product)}
           className='w-full h-[2.5rem] rounded-lg bg-[#3F6F7F] text-white flex justify-center items-center mt-auto'
         >
           اضف للسلة

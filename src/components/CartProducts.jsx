@@ -12,12 +12,7 @@ import DeleteProductFromCart from './DeleteProductFromCart';
 const CartProducts = () => {
     const { CartProducts, setCartProducts } = useApp();
 
-    useEffect(() => {
-        const cartProductsFromStorage = localStorage.getItem('cartProducts');
-        if (cartProductsFromStorage) {
-            setCartProducts(JSON.parse(cartProductsFromStorage));
-        }
-    }, [])
+
     const AddQuantity = (productID) => {
         const updatedProducts = CartProducts.map((product) => {
             if (product.id === productID) {

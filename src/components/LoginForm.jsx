@@ -1,7 +1,7 @@
 
 'use client'
 import { useState, useRef, useEffect } from "react";
-import useApp from "./context/useApp";
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { LuLoader } from "react-icons/lu";
 import { Dialog, Transition } from "@headlessui/react";
@@ -11,26 +11,17 @@ import Register from "./Register";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "./schema";
-const LoginForm = ({setIsLoggedIn}) => {
-
+import Cookies from 'js-cookie';
+import { redirect } from 'next/navigation'
+import useApp from "./context/useApp";
+const LoginForm = ({ setIsLoggedIn }) => {
+  const {setAccessToken} = useApp()
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const buttonRef = useRef(null);
-  const [alreadyRegister,setAlreadyRegister] = useState(false)
-  // On pressing the key "Enter", it will trigger the submit button
-  useEffect(() => {
-    const handleKeyPress = (event) => {
-      if (event.key === 'Enter') {
-        buttonRef.current.click();
-      }
-    };
-    document.body.addEventListener('keydown', handleKeyPress);
+  const [alreadyRegister, setAlreadyRegister] = useState(false);
+  const router = useRouter();
 
-    return () => {
-      document.body.removeEventListener('keydown', handleKeyPress);
-    };
-  }, []); 
-  
   const {
     register,
     handleSubmit,
@@ -42,6 +33,7 @@ const LoginForm = ({setIsLoggedIn}) => {
     },
     resolver: yupResolver(loginSchema),
   });
+
   const onSubmit = async (data) => {
     try {
       setIsLoading(true);
@@ -50,11 +42,16 @@ const LoginForm = ({setIsLoggedIn}) => {
           'Content-Type': 'application/json',
         },
       });
-      console.log(data)
- 
-      const accessToken = await response.data.token;
+      if (response.data.success === false) {
+        setError("Invalid Credentials")
+        console.log("Invalid Credentials")
+        return
+      }
+      const accessToken = response.data.token;
+      Cookies.set('authToken', accessToken, { expires: 7 })
+      setAccessToken(accessToken)
+      setUserInfo(response.data.userLogin)
       console.log(accessToken)
-      sessionStorage.setItem('authToken', accessToken);
 
     } catch (error) {
       if (error?.response?.status === 401) {
@@ -63,8 +60,7 @@ const LoginForm = ({setIsLoggedIn}) => {
         setError(error?.response?.data?.message);
       }
     } finally {
-   
-            setIsLoggedIn(true);
+      router.push("/");
       setIsLoading(false);
     }
   };
