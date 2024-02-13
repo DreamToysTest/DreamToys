@@ -1,7 +1,7 @@
 'use client'
 import AppProvider from "@/components/context/AppProvider.jsx";
 import LoginForm from "@/components/LoginForm.jsx";
-export default function Home() {
+export default function Page() {
 
   return (
     <main className="h-full w-full flex flex-col justify-center items-center mt-5">
