@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useApp from './context/useApp'
+import axios from 'axios'
 const DeleteProductFromCart = (productID) => {
-    const { CartProducts, setCartProducts } = useApp();
-    const DeleteProduct = (productID) => {
-        console.log("dfeleted me")
-        console.log(productID)
-        const updatedProduct = CartProducts.filter((product) => product.id !== productID.productID)
-        console.log(updatedProduct,"updatedproducts")
-        setCartProducts(updatedProduct)
-        localStorage.setItem('cartProducts', JSON.stringify(updatedProduct))
-    }
+    const {accessToken} = useApp()
+   useEffect(()=>{
+    axios.delete(
+        `https://aon-final.onrender.com/order/delete/${productID}`,
+        {
+            headers: {
+              'Content-Type': 'application/json',
+              'token' : accessToken,
+            },
+          }).then((response) => {
+            console.log(response)
+          })
+   })
     return(
         <>
         <button onClick={() => DeleteProduct(productID)} className='lg:w-[12rem] lg:h-[4rem] md:w-[12rem] md:h-[4rem] small:w-[6rem] small:h-[2.6rem]   flex justify-center items-center border-[0.2rem] border-[#3F6F7F] rounded-xl'>
