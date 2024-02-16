@@ -5,13 +5,13 @@ export const loginSchema = yup
   .object({
     phoneNumber: yup.string()
     .matches(/^07\d{9}$/,{
-      message: "Phone number must start with '07' and have a length of 11",
+      message: "يجب ان يبدأ رقم الهاتف ب'07' ويجب ان يحتوي علي 11 رقم",
     })
     .required(),
     password: yup
       .string()
       .min(6)
-      // .matches(PWD_REGEX, { message: "Please create a stronger password" })
+      .matches(PWD_REGEX, { message: "قم بادخال كلمة مرور صحيحة" })
       .required("Required"),
   })
   .required()
@@ -20,12 +20,12 @@ export const registerSchema = yup
     name: yup.string().optional(),
     phoneNumber: yup.string()
     .matches(/^07\d{9}$/,{
-      message: "Phone number must start with '07' and have a length of 11",
+      message: "يجب ان يبدأ رقم الهاتف ب'07' ويجب ان يحتوي علي 11 رقم",
     }).required(),
     password: yup
     .string()
     .min(6)
-    .matches(PWD_REGEX, { message: "Please create a stronger password" })
+    .matches(PWD_REGEX, { message: "يرجى أنشاء كلمة مرور أقوى" })
     .required("Required"),
     email: yup.string().email("Please enter a valid email").optional(),
     location: yup.string().optional(),
@@ -39,7 +39,7 @@ export const registerSchema = yup
     name: yup.string().optional(),
     phoneNumber: yup.string()
     .matches(/^07\d{9}$/,{
-      message: "Phone number must start with '07' and have a length of 11",
+      message: "يجب ان يبدأ رقم الهاتف ب'07' ويجب ان يحتوي علي 11 رقم",
     }).required(),
     email: yup.string().email("Please enter a valid email").optional(),
     location: yup.string().optional(),

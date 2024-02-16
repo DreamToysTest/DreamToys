@@ -1,5 +1,4 @@
 'use client'
-import { Footer } from "../components/footer.jsx";
 import HomeBanner from "../components/HomeBanner.jsx";
 import Header from "../components/header.jsx"
 import ShopAccordingToTheCategory from "../components/ShopAccordingToTheCategory.jsx";
@@ -24,7 +23,6 @@ export default function Page() {
               <ShopAccordingToTheCharacters />
               <DifferentProducts />
               <AnswerAQuestionToWin />
-              <Footer />
             </>
         </div>
       </AppProvider>
