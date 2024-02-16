@@ -17,7 +17,7 @@ const CartProducts = () => {
   const [CartProducts, setCartProducts] = useState([]);
   useEffect(() => {
     axios.get(
-      "https://aon-final.onrender.com/order/userView",
+      "https://aon-final.onrender.com/cart/userView",
       {
         headers: {
           'Content-Type': 'application/json',
@@ -25,44 +25,19 @@ const CartProducts = () => {
         },
       }
     ).then((response) => {
-      setCartProducts(response.data.order)
+      console.log(response,"response")
+
+      setCartProducts(response.data.basket)
     })
   },[])
+  // const [totalPrice, setTotalPrice] = useState(0)
 
-
-
-  //   }
-  // const AddQuantity = (productID) => {
-  //     const updatedProducts = CartProducts.map((product) => {
-  //         if (product.id === productID) {
-  //             return { ...product, quantity: product.quantity + 1 }
-  //         }
-  //         return product
-  //     })
-  //     setCartProducts(updatedProducts)
-  //     localStorage.setItem('cartProducts', JSON.stringify(updatedProducts))
-  // }
-
-  // const subtractQuantity = (productID) => {
-  //     const updatedProducts = CartProducts.map((product) => {
-  //         if (product.id === productID) {
-  //             return {...product, quantity: product.quantity - 1}
-  //         }
-  //         return product
-  //     })
-  //     setCartProducts(updatedProducts)
-  //     localStorage.setItem('setProducts', JSON.stringify(updatedProducts))
-
-  // }
-
-  const [totalPrice, setTotalPrice] = useState(0)
-
-  useEffect(() => {
-      const totalPrice = CartProducts.reduce((acc, product) => {
-          return acc + (product.product.price * product.quantity);
-      }, 0);
-      setTotalPrice(totalPrice);
-  }, [CartProducts]);
+  // useEffect(() => {
+  //     const totalPrice = CartProducts.reduce((acc, product) => {
+  //         return acc + (product.product.price * product.quantity);
+  //     }, 0);
+  //     setTotalPrice(totalPrice);
+  // }, [CartProducts]);
   console.log(CartProducts)
   return (
     <main className="w-full h-full flex flex-col justify-center items-center  small:px-2">

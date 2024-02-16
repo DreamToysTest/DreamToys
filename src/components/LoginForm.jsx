@@ -13,7 +13,7 @@ import { loginSchema } from "./schema";
 import Cookies from "js-cookie";
 import { redirect } from "next/navigation";
 import useApp from "./context/useApp";
-const LoginForm = ({ setIsLoggedIn }) => {
+const LoginForm = () => {
   const { setAccessToken } = useApp();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
@@ -43,6 +43,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
           headers: {
             "Content-Type": "application/json",
           },
+          withCredentials: false
         }
       );
       if (response.data.success === false) {
@@ -66,15 +67,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
     }
   };
 
-  const [isOpen, setIsOpen] = useState(true);
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
   return (
     <>
       {!alreadyRegister ? (

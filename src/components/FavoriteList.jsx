@@ -8,12 +8,14 @@ import { IoHeart } from "react-icons/io5";
 import axios from 'axios';
 import Link from 'next/link';
 import DeleteProductFromCart from './DeleteProductFromCart';
+import { GoPlus } from "react-icons/go";
+import {BiMinus} from "react-icons/bi"
 const FavoriteList = () => {
   const [ FavoriteProducts,setFavoriteProducts ] = useState([])
   const { accessToken } = useApp()
   useEffect(() => {
     axios.get(
-      "https://aon-final.onrender.com/wishList/userView",
+      "https://aon-final.onrender.com/wishlist/userView",
       {
       headers: {
         'Content-Type': 'application/json',
@@ -22,38 +24,69 @@ const FavoriteList = () => {
     }).then((response) => {
       setFavoriteProducts(response.data.wishlist)
     })
-  })
+  },[])
 
 
-  
+  //Delete Product 
+
+  const DeleteProduct = (productID) =>{
+    axios.delete(
+      `https://aon-final.onrender.com/wishlist/delete/${productID}`,
+      {
+        header: {
+          'Content-Type': 'application/json',
+          'token' : accessToken,  
+        },
+      }).then((response) =>{
+        console.log("deleted")
+      })
+  }
+
+  const AddToCart = (product) => {
+    const response = axios.post("https://aon-final.onrender.com/cart/add", 
+    {
+      purchase_type: "توصيل",
+      productId: product.id,
+    },{
+      headers: {
+        'Content-Type': 'application/json',
+        'token' :accessToken
+      },
+    });
+    console.log(response)
+  }
   return (
 <main className="w-full h-full flex flex-col justify-center items-center  small:px-2">
-      <h1 className="text-[3rem] text-[#04364A]">السلة</h1>
+      <h1 className="text-[3rem] text-[#04364A]">المفضلة</h1>
       <div className="lg:w-[45rem] md:w-[40rem] small:w-full h-ful flex flex-col justify-center items-center ">
         {FavoriteProducts?.length > 0 &&
           FavoriteProducts?.map((product) => (
             <div key={product.product.id} className="w-full lg:h-[15rem] md:h-[15rem] small:h-[8rem] border-[0.2rem] border-[#BACBD1] my-4 flex flex-row justify-betwen px-2 py-2 rounded-xl">
               <div className="w-[40%]  h-full flex lg:flex-row md:flex-col-reverse small:flex-col-reverse items-center justify-center">
-                <div className="lg:w-[50%]  h-full flex justify-center items-end lg:mb-12 ">
-                  <DeleteProductFromCart productID={product.product.id} />
+                <div className="w-full  h-full flex justify-center items-end lg:mb-12 ">
+                <button
+        onClick={()=> AddToCart(product)}
+          className='w-full h-[2.5rem] rounded-lg bg-[#3F6F7F] text-white flex justify-center items-center '
+        >
+          اضف للسلة
+        </button>
+
                 </div>
 
-                <div className="lg:w-[50%] h-full flex justify-center items-end lg:mb-12 ml-2">
-                  {/* <button
-                    onClick={() => AddQuantity(product.id)}
+                <div className="w-full h-full flex justify-center items-end lg:mb-12 ml-2">
+                  <button
                     className="lg:w-[2rem] lg:h-[2rem] md:w-[1.8rem] md:h-[1.8rem] small:w-[1.4rem] small:h-[1.4rem] rounded-lg bg-[#3F6F7F] flex justify-center items-center mr-2"
                   >
                     <GoPlus className="w-[2rem] h-[2rem] text-white" />
-                  </button> */}
+                  </button>
                   <h1 className="text-center lg:text-[1.4rem]  md:text-[1.2rem] small:text-[1rem]">
-                    {/* {product.quantity} */}
+                    3
                   </h1>
-                  {/* <button
-                    onClick={() => subtractQuantity(product.id)}
+                  <button
                     className="lg:w-[2rem] lg:h-[2rem] md:w-[1.8rem] md:h-[1.8rem] small:w-[1.4rem] small:h-[1.4rem] rounded-lg bg-[#3F6F7F] flex justify-center items-center ml-2"
                   >
                     <BiMinus className="w-[2rem] h-[2rem] text-white" />
-                  </button> */}
+                  </button>
                 </div>
               </div>
 
@@ -80,7 +113,7 @@ const FavoriteList = () => {
                     <button className="w-[1.5rem] h-[1.5rem]">
                       <CiShare2 className="w-full h-full text-[#133e4d]" />
                     </button>
-                    <button className="w-[1.5rem] h-[1.5rem]">
+                    <button onClick={DeleteProduct(product.product.id)} className="w-[1.5rem] h-[1.5rem]">
                       <IoHeart className="w-full h-full text-[#1c4a5a] fill-red-700" />
                     </button>
                   </div>

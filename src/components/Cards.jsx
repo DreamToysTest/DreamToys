@@ -5,13 +5,13 @@ import useApp from './context/useApp';
 import DeleteProductFromCart from './DeleteProductFromCart';
 import LoginForm, {openModal} from './LoginForm';
 import axios from 'axios';
-const Cards = ({ product }) => {
+const   Cards = ({ product }) => {
   const { accessToken, userInfo} = useApp();
   const [quantity, setQuantity] = useState(0);
   const [showLoginForm, setShowLoginForm] = useState(false);
 
   const AddToCart = (product) => {
-    const response = axios.post("https://aon-final.onrender.com/order/add", 
+    const response = axios.post("https://aon-final.onrender.com/cart/add", 
     {
       purchase_type: "توصيل",
       productId: product.id,
@@ -23,26 +23,9 @@ const Cards = ({ product }) => {
     });
     console.log(response)
   }
-  
-  
-  // useEffect(() => {
-  //   const cartProductsFromStorage = localStorage.getItem('cartProducts');
-  //   if (cartProductsFromStorage) {
-  //     setCartProducts(JSON.parse(cartProductsFromStorage));
-  //   }
-  // }, []);
-
-  // const AddToCart = (product) => {
-  //   const productWithQuantity = { ...product, quantity };
-  //   setCartProducts((prevCartProducts) => [...prevCartProducts, productWithQuantity]);
-
-  //   localStorage.setItem('cartProducts', JSON.stringify([...CartProducts, productWithQuantity]));
-  // };
-
-  // const isInCart = CartProducts.some((item) => item.id === product.id);
 
   const addToFavorite = (product) => {
-    const response = axios.post("https://aon-final.onrender.com/wishList/add",
+    const response = axios.post("https://aon-final.onrender.com/wishlist/add",
     {
       productId: product.id,
     },{
