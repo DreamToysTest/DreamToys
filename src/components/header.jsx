@@ -90,7 +90,7 @@ const Header = () => {
               </div>
               <input
                 type="text"
-                className="w-full h-full rounded-full text-right px-14 text-[1.2rem] text-black placeholder:text-[1rem] placeholder:ml-[1rem]"
+                className="w-full h-full rounded-full text-right px-10 text-[1.2rem] text-black placeholder:text-[1rem] placeholder:mr-[0rem]"
                 placeholder="بحث"
 
               />

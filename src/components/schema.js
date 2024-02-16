@@ -34,3 +34,16 @@ export const registerSchema = yup
   .required();
 
 
+  export const updateSchema = yup
+  .object({
+    name: yup.string().optional(),
+    phoneNumber: yup.string()
+    .matches(/^07\d{9}$/,{
+      message: "Phone number must start with '07' and have a length of 11",
+    }).required(),
+    email: yup.string().email("Please enter a valid email").optional(),
+    location: yup.string().optional(),
+
+  })
+  .required();
+

@@ -54,7 +54,7 @@ function LeftArrow() {
                   fill
                 />
         </div>
-        <h1 className="text-[2rem]">{name}</h1>
+        <h1 className="text-[1rem] lg:text-[2rem]">{name}</h1>
 
       </div>
     );
