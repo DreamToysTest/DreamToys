@@ -7,6 +7,7 @@ import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import "react-horizontal-scrolling-menu/dist/styles.css";
 const DifferentProducts = () => {
   const [AllProducts, setAllProducts] = useState([]);
+  const [ FavoriteProducts,setFavoriteProducts ] = useState([])
 
   useEffect(() => {
     const getProducts = async () => {
@@ -24,7 +25,7 @@ const DifferentProducts = () => {
     getProducts();
   }, []);
 
-  console.log(AllProducts);
+
 
   return (
     <section className="w-full h-full flex flex-col justify-center items-center   my-8">

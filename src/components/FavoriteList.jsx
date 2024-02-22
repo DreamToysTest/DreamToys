@@ -15,7 +15,7 @@ const FavoriteList = () => {
   const { accessToken } = useApp()
   useEffect(() => {
     axios.get(
-      "https://aon-final.onrender.com/wishlist/userView",
+      "https://aon-final.onrender.com/wishList/userView",
       {
       headers: {
         'Content-Type': 'application/json',
@@ -25,22 +25,30 @@ const FavoriteList = () => {
       setFavoriteProducts(response.data.wishlist)
     })
   },[])
+  console.log(FavoriteList)
 
 
   //Delete Product 
 
-  const DeleteProduct = (productID) =>{
-    axios.delete(
-      `https://aon-final.onrender.com/wishlist/delete/${productID}`,
-      {
-        header: {
-          'Content-Type': 'application/json',
-          'token' : accessToken,  
-        },
-      }).then((response) =>{
-        console.log("deleted")
-      })
-  }
+  const removeFromFavorite = async (product) => {
+    console.log(product.id)
+    try {
+      const response = await axios.delete(
+        `https://aon-final.onrender.com/wishlist/delete/${product.id}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'token': accessToken
+          },
+        }
+      );
+      console.log(response);
+      // Refresh favorite products after adding to the wishlist
+      removeFromFavorite();
+    } catch (error) {
+      console.error('Error removing to favorites:', error);
+    }
+  };
 
   const AddToCart = (product) => {
     const response = axios.post("https://aon-final.onrender.com/cart/add", 
@@ -73,21 +81,7 @@ const FavoriteList = () => {
 
                 </div>
 
-                <div className="w-full h-full flex justify-center items-end lg:mb-12 ml-2">
-                  <button
-                    className="lg:w-[2rem] lg:h-[2rem] md:w-[1.8rem] md:h-[1.8rem] small:w-[1.4rem] small:h-[1.4rem] rounded-lg bg-[#3F6F7F] flex justify-center items-center mr-2"
-                  >
-                    <GoPlus className="w-[2rem] h-[2rem] text-white" />
-                  </button>
-                  <h1 className="text-center lg:text-[1.4rem]  md:text-[1.2rem] small:text-[1rem]">
-                    3
-                  </h1>
-                  <button
-                    className="lg:w-[2rem] lg:h-[2rem] md:w-[1.8rem] md:h-[1.8rem] small:w-[1.4rem] small:h-[1.4rem] rounded-lg bg-[#3F6F7F] flex justify-center items-center ml-2"
-                  >
-                    <BiMinus className="w-[2rem] h-[2rem] text-white" />
-                  </button>
-                </div>
+
               </div>
 
               <div className="w-[60%]  h-full flex flex-row items-center just">
@@ -113,7 +107,7 @@ const FavoriteList = () => {
                     <button className="w-[1.5rem] h-[1.5rem]">
                       <CiShare2 className="w-full h-full text-[#133e4d]" />
                     </button>
-                    <button onClick={DeleteProduct(product.product.id)} className="w-[1.5rem] h-[1.5rem]">
+                    <button onClick={() => removeFromFavorite(product.product)} className="w-[1.5rem] h-[1.5rem]">
                       <IoHeart className="w-full h-full text-[#1c4a5a] fill-red-700" />
                     </button>
                   </div>

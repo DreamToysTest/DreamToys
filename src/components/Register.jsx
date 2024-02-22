@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from 'axios';
 import { registerSchema } from './schema';
 import LoginForm from './LoginForm';
+import { FaSpinner } from "react-icons/fa";
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -133,7 +134,7 @@ const Register = () => {
                 </div>
 
                 {isLoading ? (
-                  <LuLoader size={25} className="animate-spin" />
+                  <FaSpinner className="animate-spin" />
                 ) : (
                   <button
                     className="w-full p-3 rounded-lg shadow-sm bg-[#3F6F7F] hover:shadow-xl disabled:text-gray-300 disabled:bg-violet-500"
