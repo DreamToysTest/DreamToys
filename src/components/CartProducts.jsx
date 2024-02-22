@@ -15,12 +15,13 @@ const CartProducts = () => {
   const { accessToken, userInfo } = useApp()
 
   const [CartProducts, setCartProducts] = useState([]);
+  console.log(accessToken)
   useEffect(() => {
     axios.get(
       "https://aon-final.onrender.com/cart/userView",
       {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type':'application/json',
           'token' : accessToken,
         },
       }
@@ -30,6 +31,8 @@ const CartProducts = () => {
       setCartProducts(response.data.basket)
     })
   },[])
+
+  
   // const [totalPrice, setTotalPrice] = useState(0)
 
   // useEffect(() => {
@@ -37,7 +40,9 @@ const CartProducts = () => {
   //         return acc + (product.product.price * product.quantity);
   //     }, 0);
   //     setTotalPrice(totalPrice);
-  // }, [CartProducts]);
+  // }, [CartProducts])
+
+  
   console.log(CartProducts)
   return (
     <main className="w-full h-full flex flex-col justify-center items-center  small:px-2">
